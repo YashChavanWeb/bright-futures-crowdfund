@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -19,7 +18,7 @@ const LeaderboardSection = () => {
       { threshold: 0.2 }
     );
 
-    const element = document.getElementById('leaderboard-section');
+    const element = document.getElementById('leaderboard');
     if (element) observer.observe(element);
 
     return () => observer.disconnect();
@@ -70,7 +69,7 @@ const LeaderboardSection = () => {
   const currentDonors = topDonors[timeFilter];
 
   return (
-    <section id="leaderboard-section" className="py-20 px-4 bg-gradient-to-br from-purple-50 to-blue-50 relative overflow-hidden">
+    <section id="leaderboard" className="py-20 px-4 bg-gradient-to-br from-purple-50 to-blue-50 relative overflow-hidden">
       {/* Parallax background elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-10 left-1/4 w-64 h-64 bg-gradient-to-r from-purple-300 to-blue-300 rounded-full blur-3xl animate-pulse"></div>
