@@ -76,7 +76,7 @@ const FAQSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <div className="bg-gradient-to-r from-purple-100 to-blue-100 rounded-2xl p-8">
+          {/* <div className="bg-gradient-to-r from-purple-100 to-blue-100 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-gray-800 mb-4">Still have questions?</h3>
             <p className="text-gray-600 mb-6">
               We're here to help! Contact our support team for personalized assistance.
@@ -95,7 +95,7 @@ const FAQSection = () => {
                 Live Chat
               </a>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

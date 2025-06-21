@@ -27,8 +27,8 @@ const Index = () => {
           goal={goal} 
           donorCount={donorCount} 
         />
-        <ImpactSection />
-        <QuizittSection />
+        {/* <ImpactSection /> */}
+        {/* <QuizittSection /> */}
         <RewardsSection />
         <LeaderboardSection />
         <TestimonialsSection />

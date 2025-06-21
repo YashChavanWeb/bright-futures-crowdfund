@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Heart, Share2, X } from 'lucide-react';
@@ -10,6 +9,7 @@ const FloatingCTA = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Show the CTA only if the scroll position is more than 500px and not dismissed
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const shouldShow = scrollPosition > 500 && !isDismissed;
@@ -17,6 +17,8 @@ const FloatingCTA = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+
+    // Cleanup the event listener when the component is unmounted
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isDismissed]);
 
@@ -38,13 +40,13 @@ const FloatingCTA = () => {
     }
   };
 
-  if (!isVisible) return null;
+  if (!isVisible) return null; // Hide the CTA if not visible
 
   return (
     <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 animate-fade-in">
       <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl border border-purple-100 p-4 max-w-sm mx-auto">
         <button
-          onClick={() => setIsDismissed(true)}
+          onClick={() => setIsDismissed(true)} // Close the popup when the cross is clicked
           className="absolute -top-2 -right-2 bg-gray-100 hover:bg-gray-200 rounded-full p-1 transition-colors duration-200"
         >
           <X className="w-4 h-4 text-gray-600" />

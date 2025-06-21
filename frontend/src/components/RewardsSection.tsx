@@ -99,7 +99,7 @@ const RewardsSection = () => {
                 <p className="text-gray-600 leading-relaxed">{reward.description}</p>
                 
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-gray-800">What's Included:</h4>
+                  {/* <h4 className="font-semibold text-gray-800">What's Included:</h4>
                   <ul className="space-y-2">
                     {reward.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm text-gray-600">
@@ -107,7 +107,7 @@ const RewardsSection = () => {
                         {feature}
                       </li>
                     ))}
-                  </ul>
+                  </ul> */}
                 </div>
                 
                 <div className="flex items-center justify-between pt-4 border-t border-gray-100">

@@ -16,7 +16,7 @@ const Footer = () => {
             <p className="text-gray-300 leading-relaxed">
               Revolutionizing education through interactive technology, making quality learning accessible to every child worldwide.
             </p>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">f</div>
               </a>
@@ -26,9 +26,9 @@ const Footer = () => {
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300 transform hover:scale-110">
                 <div className="w-8 h-8 bg-pink-600 rounded-lg flex items-center justify-center">i</div>
               </a>
-            </div>
+            </div> */}
           </div>
-          
+{/*           
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Platform</h3>
             <ul className="space-y-3 text-gray-300">
@@ -37,9 +37,9 @@ const Footer = () => {
               <li><a href="#" className="hover:text-white transition-colors duration-300 hover:underline">Teacher Dashboard</a></li>
               <li><a href="#" className="hover:text-white transition-colors duration-300 hover:underline">Student Analytics</a></li>
             </ul>
-          </div>
+          </div> */}
           
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <h3 className="text-xl font-semibold">Support</h3>
             <ul className="space-y-3 text-gray-300">
               <li><a href="#campaign" className="hover:text-white transition-colors duration-300 hover:underline">Campaign</a></li>
@@ -47,19 +47,19 @@ const Footer = () => {
               <li><a href="#rewards" className="hover:text-white transition-colors duration-300 hover:underline">Rewards</a></li>
               <li><a href="#leaderboard" className="hover:text-white transition-colors duration-300 hover:underline">Supporters</a></li>
             </ul>
-          </div>
+          </div> */}
           
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Contact</h3>
             <div className="text-gray-300 space-y-3">
               <p className="flex items-center gap-2">
-                <span>📧</span> hello@quizitt.com
+                <span>📧</span> quizittindia@gmail.com
               </p>
               <p className="flex items-center gap-2">
-                <span>📞</span> +91 98765 43210
+                <span>📞</span> +91 81047 96542
               </p>
               <p className="flex items-center gap-2">
-                <span>📍</span> Mumbai, India
+                <span>📍</span> Vidya Vihar, India
               </p>
             </div>
           </div>
@@ -81,9 +81,6 @@ const Footer = () => {
             </div>
           </div>
           <div className="text-center">
-            <p className="text-gray-400 text-sm">
-              © 2024 Quizitt.com. Made with ❤️ for educational innovation and children's futures.
-            </p>
           </div>
         </div>
       </div>
