@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Button } from './../components/ui/button'; // Assuming these paths are correct in your project
-import { Card, CardContent, CardHeader, CardTitle } from './../components/ui/card'; // Assuming these paths are correct
-import { Badge } from './../components/ui/badge'; // Assuming these paths are correct
-import { useToast } from './../hooks/use-toast'; // Assuming this path is correct
+import { Button } from './../components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from './../components/ui/card';
+import { Badge } from './../components/ui/badge';
+import { useToast } from './../hooks/use-toast';
 import { Heart, Shield, Mail, Receipt, Share2, Facebook, Twitter, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import Header from './../components/Header'; // Commenting out as Header/Footer components are not provided
-import Footer from './../components/Footer'; // Commenting out as Header/Footer components are not provided
+import Header from './../components/Header';
+import Footer from './../components/Footer';
 
 const Donate = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
@@ -20,6 +20,11 @@ const Donate = () => {
   const navigate = useNavigate();
 
   const presetAmounts = [600, 1200, 3000, 6000, 12000];
+
+  // IMPORTANT: Replace this with your actual backend URL.
+  // This is often loaded from environment variables (e.g., .env.local)
+  // For development, you might set it to 'http://localhost:5000' or similar.
+  const BACKEND_URL = 'https://crowd-funding-quizitt.onrender.com'; // <--- **REPLACE THIS WITH YOUR ACTUAL BACKEND BASE URL**
 
   useEffect(() => {
     // Load Razorpay script dynamically
@@ -43,9 +48,7 @@ const Donate = () => {
   const handlePaymentSuccess = async (response: any) => {
     // This function will now send verification data to your backend
     try {
-      // Mocking the fetch call for demonstration purposes.
-      // In a real application, replace this with your actual backend endpoint.
-      const verifyRes = await fetch(`${import.meta.VITE_BACKEND_URL}/api/v1/payment/verify-payment`, {
+      const verifyRes = await fetch(`${BACKEND_URL}/api/v1/payment/verify-payment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -66,7 +69,6 @@ const Donate = () => {
         });
         setSelectedAmount(null);
         setCustomAmount('');
-        // You might want to update a local state or redirect here based on successful verification
       } else {
         toast({
           title: "Payment Verification Failed",
@@ -86,7 +88,6 @@ const Donate = () => {
 
   const handleDonate = async () => {
     const amount = selectedAmount || parseInt(customAmount);
-    // Frontend validation: minimum 100 for ₹1 (as your backend checks for 1)
     if (!amount || amount < 100) {
       toast({
         title: "Invalid Amount",
@@ -103,9 +104,7 @@ const Donate = () => {
 
     try {
       // Step 1: Create an order on your backend
-      // Mocking the fetch call for demonstration purposes.
-      // In a real application, replace this with your actual backend endpoint.
-      const res = await fetch(`${import.meta.VITE_BACKEND_URL}/api/v1/payment/order`, {
+      const res = await fetch(`${BACKEND_URL}/api/v1/payment/order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -177,7 +176,6 @@ const Donate = () => {
         window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`);
         break;
       case 'copy':
-        // Using document.execCommand('copy') for better iframe compatibility
         const textArea = document.createElement("textarea");
         textArea.value = `${text} ${url}`;
         document.body.appendChild(textArea);
@@ -201,7 +199,7 @@ const Donate = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 font-inter">
-       <Header />
+      <Header />
 
       <div className="py-12 md:py-20 px-4 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-600 relative overflow-hidden">
         {/* Background blobs for visual effect */}
@@ -295,7 +293,7 @@ const Donate = () => {
                     }}
                     placeholder="Enter custom amount"
                     className="w-full pl-8 sm:pl-10 pr-4 py-3 sm:py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent text-base sm:text-lg transition-all duration-300"
-                    min="100" // Frontend minimum
+                    min="100"
                   />
                 </div>
                 {(customAmount && parseInt(customAmount) >= 600) && (
@@ -330,7 +328,7 @@ const Donate = () => {
               <Button
                 onClick={handleDonate}
                 className="w-full bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 hover:from-purple-700 hover:via-blue-700 hover:to-indigo-700 text-white py-4 sm:py-5 md:py-6 text-base sm:text-lg md:text-xl font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-                disabled={!selectedAmount && (!customAmount || parseInt(customAmount) < 100)} // Disable if no amount or custom is too low
+                disabled={!selectedAmount && (!customAmount || parseInt(customAmount) < 100)}
               >
                 <Heart className="w-5 h-5 sm:w-6 sm:h-6 mr-2 sm:mr-3" />
                 Donate Securely with Razorpay
@@ -387,7 +385,7 @@ const Donate = () => {
         </div>
       </div>
 
-      <Footer /> 
+      <Footer />
     </div>
   );
 };
