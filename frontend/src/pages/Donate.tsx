@@ -21,10 +21,11 @@ const Donate = () => {
 
   const presetAmounts = [600, 1200, 3000, 6000, 12000];
 
-  // IMPORTANT: Replace this with your actual backend URL.
-  // This is often loaded from environment variables (e.g., .env.local)
-  // For development, you might set it to 'http://localhost:5000' or similar.
-  const BACKEND_URL = 'https://crowd-funding-quizitt.onrender.com'; // <--- **REPLACE THIS WITH YOUR ACTUAL BACKEND BASE URL**
+  // Correctly access the environment variable
+  // Ensure you have a .env file in your project root with VITE_BACKEND_URL and VITE_RAZORPAY_KEY_ID
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const RAZORPAY_KEY_ID = import.meta.env.VITE_RAZORPAY_KEY_ID;
+
 
   useEffect(() => {
     // Load Razorpay script dynamically
@@ -48,6 +49,7 @@ const Donate = () => {
   const handlePaymentSuccess = async (response: any) => {
     // This function will now send verification data to your backend
     try {
+      // Corrected typo: import.meta.VITE_BACKEND_URL
       const verifyRes = await fetch(`${BACKEND_URL}/api/v1/payment/verify-payment`, {
         method: "POST",
         headers: {
@@ -65,7 +67,7 @@ const Donate = () => {
       if (verifyRes.ok) {
         toast({
           title: "Payment Successful! 🎉",
-          description: "Your donation has been successfully processed and verified. Thank you!",
+          description: "Your donation has been successfully processed and verified. Thank M",
         });
         setSelectedAmount(null);
         setCustomAmount('');
@@ -104,6 +106,7 @@ const Donate = () => {
 
     try {
       // Step 1: Create an order on your backend
+      // Corrected typo: import.meta.VITE_BACKEND_URL
       const res = await fetch(`${BACKEND_URL}/api/v1/payment/order`, {
         method: "POST",
         headers: {
@@ -121,7 +124,7 @@ const Donate = () => {
 
       // Step 2: Open Razorpay checkout with the order details
       const options = {
-        key: 'YOUR_RAZORPAY_KEY_ID', // Replace with your actual Razorpay Key ID
+        key: RAZORPAY_KEY_ID, // Use the environment variable for Razorpay Key ID
         amount: orderData.amount, // Amount in paise from backend order
         currency: orderData.currency,
         name: "Quizitt.com Education",
