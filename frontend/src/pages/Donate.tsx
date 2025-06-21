@@ -45,7 +45,7 @@ const Donate = () => {
     try {
       // Mocking the fetch call for demonstration purposes.
       // In a real application, replace this with your actual backend endpoint.
-      const verifyRes = await fetch("http://localhost:3000/api/v1/payment/verify-payment", {
+      const verifyRes = await fetch(`${import.meta.VITE_BACKEND_URL}/api/v1/payment/verify-payment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -105,7 +105,7 @@ const Donate = () => {
       // Step 1: Create an order on your backend
       // Mocking the fetch call for demonstration purposes.
       // In a real application, replace this with your actual backend endpoint.
-      const res = await fetch("http://localhost:3000/api/v1/payment/order", {
+      const res = await fetch(`${import.meta.VITE_BACKEND_URL}/api/v1/payment/order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
