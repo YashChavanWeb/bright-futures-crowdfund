@@ -2,10 +2,12 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Heart, Share2, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const FloatingCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,8 +20,8 @@ const FloatingCTA = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [isDismissed]);
 
-  const scrollToDonate = () => {
-    document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' });
+  const handleDonateClick = () => {
+    navigate('/donate');
   };
 
   const handleShare = () => {
@@ -55,7 +57,7 @@ const FloatingCTA = () => {
         
         <div className="flex gap-3">
           <Button
-            onClick={scrollToDonate}
+            onClick={handleDonateClick}
             className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
           >
             <Heart className="w-4 h-4 mr-2" />

@@ -1,16 +1,18 @@
 
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
-  const scrollToDonate = () => {
-    document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' });
+  const handleDonateClick = () => {
+    navigate('/donate');
   };
 
   return (
@@ -32,10 +34,10 @@ const HeroSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <Button 
-                onClick={scrollToDonate}
+                onClick={handleDonateClick}
                 className="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 hover:from-purple-700 hover:via-blue-700 hover:to-indigo-700 text-white px-10 py-4 text-xl font-semibold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
               >
-                Support Education
+                Donate Now
               </Button>
               <Button 
                 variant="outline" 

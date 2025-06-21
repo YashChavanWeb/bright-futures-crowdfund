@@ -3,9 +3,11 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Gift, Star } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const RewardsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,22 +30,22 @@ const RewardsSection = () => {
       amount: 600,
       title: "Quizitt Premium Cap",
       description: "Show your support with our exclusive branded cap featuring the Quizitt logo and inspirational education quotes.",
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=400&h=300&fit=crop",
       popular: true,
-      features: ["Premium cotton blend", "Adjustable strap", "Embroidered logo", "Limited edition design"]
+      features: ["Premium cotton blend", "Adjustable strap", "Embroidered Quizitt logo", "Limited edition design"]
     },
     {
       amount: 3000,
       title: "Quizitt Champion T-Shirt",
       description: "Premium quality t-shirt celebrating your contribution to educational innovation, made with sustainable materials.",
-      image: "https://images.unsplash.com/photo-1721322800607-8c38375eef04?w=400&h=300&fit=crop",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop",
       popular: false,
-      features: ["Organic cotton", "Unisex design", "Screen-printed graphics", "Available in multiple sizes"]
+      features: ["Organic cotton", "Unisex design", "Screen-printed Quizitt graphics", "Available in multiple sizes"]
     }
   ];
 
-  const scrollToDonate = () => {
-    document.getElementById('donate')?.scrollIntoView({ behavior: 'smooth' });
+  const handleDonateClick = () => {
+    navigate('/donate');
   };
 
   return (
@@ -113,7 +115,7 @@ const RewardsSection = () => {
                     ₹{reward.amount.toLocaleString()}
                   </div>
                   <Button 
-                    onClick={scrollToDonate}
+                    onClick={handleDonateClick}
                     className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white rounded-full px-8 py-3 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
                   >
                     Donate & Claim
