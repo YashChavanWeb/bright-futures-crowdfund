@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 // Use CORS middleware
 app.use(cors({
-    origin: 'https://quizitt-funds.vercel.app',
+    origin: 'https://www.quizitt.com',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
